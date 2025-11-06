@@ -244,3 +244,14 @@ if __name__ == "__main__":
         print("\n\n👋 Orchestrator stopped")
     except Exception as e:
         print(f"\n❌ Error: {str(e)}")
+# Keep the service running
+print("\n✅ Orchestrator is running and ready!")
+print("Press Ctrl+C to stop")
+
+import time
+try:
+    while True:
+        time.sleep(60)  # Check every minute
+        print("🎭 Orchestrator still running...")
+except KeyboardInterrupt:
+    print("\n👋 Orchestrator stopped")
