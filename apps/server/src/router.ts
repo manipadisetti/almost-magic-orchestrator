@@ -2,7 +2,9 @@ import { initTRPC } from '@trpc/server';
 import { z } from 'zod';
 import { Context } from './context';
 
-const t = initTRPC.context<Context>().create();
+export const t = initTRPC.context<Context>().create();
+
+import { vaporRouter } from './routers/vapor';
 
 export const appRouter = t.router({
   health: t.procedure.query(() => {
@@ -10,14 +12,7 @@ export const appRouter = t.router({
   }),
   
   // Vapor (Ingestion) procedures
-  vapor: t.router({
-    captureText: t.procedure
-      .input(z.object({ content: z.string() }))
-      .mutation(async ({ input }) => {
-        // Store the text input
-        return { id: 'temp-id', status: 'captured' };
-      }),
-  }),
+  vapor: vaporRouter,
   
   // Condenser (Reasoning) procedures
   condenser: t.router({
