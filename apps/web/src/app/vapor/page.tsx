@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Button } from '@thinair/ui';
 import { trpc } from '../../utils/trpc';
 import Link from 'next/link';
-import Link from 'next/link';
 
 export default function VaporPage() {
   const [input, setInput] = useState('');
