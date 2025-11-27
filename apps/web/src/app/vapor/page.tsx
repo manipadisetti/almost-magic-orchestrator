@@ -39,7 +39,7 @@ export default function VaporPage() {
         <div className="bg-gray-800/50 rounded-lg p-6 shadow-lg border border-gray-700">
           <textarea
             className="w-full h-40 p-4 bg-gray-900 text-white rounded-md border border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
-            placeholder="Describe your application in detail. For example: 'I need a task management app with user authentication, task categories, due dates, and email notifications.'"
+            placeholder="Describe your application in detail. For example: 'I need a task management app with user authentication, task categories, due dates, and email notifications for Australian users.'"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
@@ -107,7 +107,7 @@ export default function VaporPage() {
             
             <div className="mt-6 flex justify-end">
               <Button variant="outline" size="default">
-                Refine Plan
+                Customise Plan
               </Button>
               <Button variant="glow" size="default" className="ml-4">
                 Materialise Code
