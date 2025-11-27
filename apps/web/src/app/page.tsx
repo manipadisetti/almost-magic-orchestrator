@@ -9,7 +9,7 @@ export default function Home() {
           Create software out of <span className="text-[#3b82f6]">Thin Air</span>
         </h1>
         <p className="text-xl text-gray-300 mt-6">
-          From napkin sketch to deployed application in minutes via a "Zero-Spec" pipeline.
+          From napkin sketch to deployed application in minutes via a "Zero-Spec" pipeline. Optimised for Australian businesses.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
           <Button variant="glow" size="lg">

@@ -59,7 +59,7 @@ export default function VaporPage() {
         {inhale.isPending && (
           <div className="bg-gray-800/50 rounded-lg p-6 shadow-lg border border-gray-700 text-center">
             <div className="animate-pulse text-blue-400">
-              <p className="text-lg">AI is analyzing your requirements...</p>
+              <p className="text-lg">AI is analysing your requirements...</p>
               <p className="text-sm mt-2">This may take a few moments</p>
             </div>
           </div>
