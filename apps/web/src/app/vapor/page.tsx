@@ -32,7 +32,7 @@ export default function VaporPage() {
             <span className="text-[#3b82f6]">Vapor</span> Studio
           </h1>
           <p className="text-lg text-gray-300 mt-2">
-            Describe your application and we'll materialize it for you
+            Describe your application and we'll materialise it for you
           </p>
         </div>
         
@@ -51,7 +51,7 @@ export default function VaporPage() {
               onClick={handleSubmit}
               disabled={inhale.isPending || !input.trim()}
             >
-              {inhale.isPending ? 'Materializing...' : 'Materialize'}
+              {inhale.isPending ? 'Materialising...' : 'Materialise'}
             </Button>
           </div>
         </div>
@@ -60,7 +60,7 @@ export default function VaporPage() {
           <div className="bg-gray-800/50 rounded-lg p-6 shadow-lg border border-gray-700 text-center">
             <div className="animate-pulse text-blue-400">
               <p className="text-lg">AI is analysing your requirements...</p>
-              <p className="text-sm mt-2">This may take a few moments</p>
+              <p className="text-sm mt-2">This may take a few moments. We're optimising your solution.</p>
             </div>
           </div>
         )}
@@ -110,7 +110,7 @@ export default function VaporPage() {
                 Refine Plan
               </Button>
               <Button variant="glow" size="default" className="ml-4">
-                Generate Code
+                Materialise Code
               </Button>
             </div>
           </div>
