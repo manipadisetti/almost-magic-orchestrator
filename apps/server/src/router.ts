@@ -5,6 +5,7 @@ import { Context } from './context';
 export const t = initTRPC.context<Context>().create();
 
 import { vaporRouter } from './routers/vapor';
+import { mirageRouter } from './routers/mirage';
 
 export const appRouter = t.router({
   health: t.procedure.query(() => {
@@ -14,14 +15,17 @@ export const appRouter = t.router({
   // Vapor (Ingestion) procedures
   vapor: vaporRouter,
   
+  // Mirage (Visualization) procedures
+  mirage: mirageRouter,
+  
   // Condenser (Reasoning) procedures
   condenser: t.router({
-    analyzeRequirements: t.procedure
+    analyseRequirements: t.procedure
       .input(z.object({ inputId: z.string() }))
       .mutation(async ({ input }) => {
         // Generate Intent JSON
         return { 
-          status: 'analyzed',
+          status: 'analysed',
           intentJson: { 
             appType: 'placeholder',
             components: []

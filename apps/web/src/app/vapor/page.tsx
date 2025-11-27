@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@thinair/ui';
 import { trpc } from '../../utils/trpc';
+import Link from 'next/link';
 
 export default function VaporPage() {
   const [input, setInput] = useState('');
@@ -109,9 +110,11 @@ export default function VaporPage() {
               <Button variant="outline" size="default">
                 Customise Plan
               </Button>
-              <Button variant="glow" size="default" className="ml-4">
-                Materialise Code
-              </Button>
+              <Link href={`/mirage?projectId=${result.project_id || 'demo'}`}>
+                <Button variant="glow" size="default" className="ml-4">
+                  Materialise Code
+                </Button>
+              </Link>
             </div>
           </div>
         )}
