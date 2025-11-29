@@ -1,0 +1,25 @@
+{
+  "name": "thin-air",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "turbo": "^1.10.0",
+    "typescript": "^5.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "drizzle-orm": "0.33.0",
+      "drizzle-kit": "0.24.2"
+    }
+  }
+}

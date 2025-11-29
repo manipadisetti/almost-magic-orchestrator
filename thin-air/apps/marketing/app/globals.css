@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* High contrast focus indicators */
+  *:focus-visible {
+    outline: 3px solid #3B82F6;
+    outline-offset: 2px;
+  }
+
+  /* Light theme for all pages */
+  body {
+    @apply bg-white text-gray-900;
+  }
+}
+
+/* Australian English - Accessibility */
+/* The original scroll-behavior: smooth; for * is now moved to html in @layer base */
+
+/* Neurodivergent-friendly: Clear focus indicators */
+/* The original *:focus-visible rule is now moved and updated in @layer base */
+
+/* High contrast for readability */
+.text-high-contrast {
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}

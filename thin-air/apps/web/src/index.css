@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+/* Simplified UI Mode */
+.simplified * {
+  animation: none !important;
+  transition: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+.simplified .bg-gradient-to-r,
+.simplified .bg-clip-text {
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  color: currentColor !important;
+}
+
+/* Large Text Mode */
+.text-lg {
+  font-size: 1.25rem;
+  /* Base size 20px */
+}
+
+.text-lg h1 {
+  font-size: 3rem !important;
+}
+
+.text-lg h2 {
+  font-size: 2.25rem !important;
+}
+
+.text-lg h3 {
+  font-size: 1.875rem !important;
+}
+
+.text-lg p,
+.text-lg li,
+.text-lg span {
+  font-size: 1.25rem !important;
+  line-height: 1.75 !important;
+}
+
+/* High Contrast Focus Outlines */
+*:focus-visible {
+  outline: 3px solid #FCD34D !important;
+  /* Yellow-300 */
+  outline-offset: 2px;
+}

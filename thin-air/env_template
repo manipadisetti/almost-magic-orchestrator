@@ -1,0 +1,6 @@
+DATABASE_URL="postgresql://user:password@host:port/db"
+GOOGLE_GENERATIVE_AI_API_KEY="your_gemini_key_here"
+ANTHROPIC_API_KEY="your_anthropic_key_here"
+OPENROUTER_API_KEY="your_openrouter_key_here"
+STRIPE_SECRET_KEY="your_stripe_key_here"
+# Add other keys as needed

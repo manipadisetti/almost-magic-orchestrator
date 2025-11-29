@@ -1,0 +1,13 @@
+node_modules
+
+.turbo
+dist
+.DS_Store
+postgres_data
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production

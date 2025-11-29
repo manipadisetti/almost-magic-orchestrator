@@ -1,0 +1,89 @@
+name: Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  reviewdog:
+    name: ReviewDog - Automated Code Review
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      
+      - uses: pnpm/action-setup@v2
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      # ESLint Review
+      - name: Run ESLint with ReviewDog
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          eslint_flags: '. --ext .ts,.tsx'
+          fail_on_error: false
+      
+      # TypeScript Review
+      - name: Run TypeScript with ReviewDog
+        uses: EPMatt/reviewdog-action-tsc@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          fail_on_error: false
+      
+      # Security Review with Trivy
+      - name: Run Trivy Security Scan
+        uses: reviewdog/action-trivy@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          trivy_command: fs
+          trivy_target: .
+      
+      # Code Quality with SonarJS
+      - name: Run SonarJS Review
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          eslint_flags: '. --ext .ts,.tsx --plugin sonarjs'
+          fail_on_error: false
+      
+      # Spell Check
+      - name: Run Spell Check
+        uses: reviewdog/action-misspell@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          locale: "US"
+      
+      # Markdown Linting
+      - name: Run Markdown Lint
+        uses: reviewdog/action-markdownlint@v0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+      
+      # Shellcheck for scripts
+      - name: Run Shellcheck
+        uses: reviewdog/action-shellcheck@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          pattern: "*.sh"
+      
+      # Hadolint for Dockerfiles
+      - name: Run Hadolint
+        uses: reviewdog/action-hadolint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review

@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: thin-air-postgres
+    ports:
+      - "5300:5432"
+    environment:
+      POSTGRES_USER: thinair
+      POSTGRES_PASSWORD: thinair_dev
+      POSTGRES_DB: thinair_dev
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U thinair"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7
+    container_name: thin-air-redis
+    ports:
+      - "5301:6379"
+    command: redis-server --requirepass thinair_dev
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio
+    container_name: thin-air-minio
+    ports:
+      - "5801:9000"
+      - "5802:9001"
+    environment:
+      MINIO_ROOT_USER: thinair
+      MINIO_ROOT_PASSWORD: thinair_dev
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: thin-air-rabbitmq
+    ports:
+      - "5320:5672"
+      - "5321:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: thinair
+      RABBITMQ_DEFAULT_PASS: thinair_dev
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  minio_data:
+  rabbitmq_data:
